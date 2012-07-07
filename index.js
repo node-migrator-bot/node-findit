@@ -121,7 +121,7 @@ exports.findSync = function findSync(dir, options, callback) {
         if (stat.isDirectory()) {
             fs.readdirSync(file).forEach(function(f) { fileQueue.push(path.join(file, f)); });
         } else if (stat.isSymbolicLink()) {
-            if (options && options.follow_symlinks && path.existsSync(file)) {
+            if (options && options.follow_symlinks && fs.existsSync(file)) {
                 fileQueue.push(fs.realpathSync(file));
             }
         }
