@@ -51,7 +51,7 @@ function find (base, options, cb) {
                     if (stat.isSymbolicLink()) {
                         em.emit('link', file, stat);
                         if (options && options.follow_symlinks) {
-                          path.exists(file, function(exists) {
+                          fs.exists(file, function(exists) {
                             if (exists) {
                               fs.readlink(file, function(err, resolvedPath) {
                                 if (err) {
